@@ -1,0 +1,9 @@
+hops:
+- name: a
+  path: !!binary |
+    L1VzZXJzL2FsaW5odXptZXphbi9EZXNrdG9wL3dvcmtzcGFjZS9ob3BfY29tbWFuZC9ob3A=
+- name: b
+  path: !!binary |
+    L1VzZXJzL2FsaW5odXptZXphbi9EZXNrdG9wL3dvcmtzcGFjZS9ob3BfY29tbWFuZC9ob3A=
+- name: c
+  path: /Users/alinhuzmezan/Desktop/workspace/hop_command/hop
