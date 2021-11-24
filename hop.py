@@ -1,7 +1,8 @@
 #! /Users/alinhuzmezan/.pyenv/shims/python3
-from os import PathLike, getcwd, getcwdb
+from os import PathLike, _exit, chdir, getcwd, getcwdb, getpgid, getppid, kill, system
 import sys
 import pathlib
+import signal
 
 from yaml import dump, safe_load, serialize
 from yaml.error import YAMLError
@@ -25,10 +26,65 @@ def main():
         if (str_action == 'ls'):
             show_hops( list_hops)
         if (str_action == 'rm'):
-            delete_hop( list_hops)        
+            delete_hop( list_hops)
+        if (str_action == 'back'):
+            hop_back()
+        # if arg1 is a valid hop name sys cd to hop path
+        tryhop(str_action)       
     else:
         print("Error:", end=" ")
         print("Invalid args.")
+
+def hop_back():
+    list_hops = read_hops()
+    
+    for hop in list_hops['hops']:
+        if (hop['name'] == 'hop_active'):
+            if (hop['path'] == 1):
+                hop['path'] = 0
+                write_hops(list_hops)
+                kill(getppid(), signal.SIGHUP)
+                return
+    # if no hop_active to hop back
+    print("no hop active to hop back")
+
+def tryhop(hop_name):
+    list_hops = read_hops()
+    
+    found = False
+    for hop in list_hops['hops']:
+        if (hop['name'] == hop_name):
+            #print( f"Trying hop {hop_name} at {hop['path']}")
+            hop_path = hop['path']
+            found = True
+            break
+    
+    already_hopped = False
+    for hop in list_hops['hops']:
+        if (hop['name'] == 'hop_active'):
+            if (hop['path'] == 1):
+                print("already hopped")
+                already_hopped = True
+    
+    if (found and not already_hopped):
+        try:
+            for hop in list_hops['hops']:
+                if (hop['name'] == 'hop_active'):
+                    hop['path'] = 1
+                    break
+            write_hops(list_hops)
+            
+            print( f"Changing to {hop_name} @ {hop_path}...")
+
+            # change to hop path
+            chdir(hop_path)
+            # open new procces
+            system('zsh')
+        
+            print( "All set!")
+        except Exception as e:
+            print(e)
+            print( f"Error: Hop {hop_name} file not found.")
 
 
 def show_hops(list_hops):
