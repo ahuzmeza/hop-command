@@ -1,7 +1,7 @@
 #! /Users/alinhuzmezan/.pyenv/shims/python3
 import sys
 
-from os import chdir, getcwd, getppid, kill, system
+from os import chdir, getcwd, getgid, getppid, kill, system
 from signal import SIGHUP
 from yaml import dump, safe_load
 from yaml.error import YAMLError
@@ -11,15 +11,19 @@ class bcolors:
     RED    = '\033[0;31m'
     GREEN  = '\033[0;32m'
     PURPLE = '\033[0;35m'
+    xyz = '\033[0;33m'
+    GRAYBG = '\033[0;96m'
     ENDC   = '\033[0m'
     BOLD   = '\033[1m'
 
-FILE = Path(__file__)
-DIR = FILE.parent
-HOPS_DIR = DIR / "saved_hops"
+FILE      = Path(__file__)
+DIR       = FILE.parent
+HOPS_DIR  = DIR / "saved_hops"
 HOPS_FILE = HOPS_DIR / "saved_paths.yaml"
 
 def main():
+    print(f"B>{getppid()}")
+
     if (len(sys.argv) > 1 and len(sys.argv) < 4):
         list_hops = read_hops()
         str_action = sys.argv[1].lower()
@@ -28,6 +32,8 @@ def main():
             return
         if (str_action == 'ls'):
             show_hops( list_hops)
+            print(f"A>{getppid()}")
+
             return
         if (str_action == 'rm'):
             delete_hop( list_hops)
@@ -38,12 +44,11 @@ def main():
         if (str_action == 'reset'):
             hop_reset()
             return
-        # if arg1 is a valid hop name sys cd to hop path
+        # if arg1 is a valid, hop to hop path
         tryhop(str_action)       
     else:
         print("Error:", end=" ")
         print("Invalid args.")
-
 
 # reads hops from HOPS_FILE
 def read_hops():
@@ -53,10 +58,12 @@ def read_hops():
         except YAMLError as exc:
             print(exc)
 
+
 # writes hops to HOPS_FILE
 def write_hops(list_hops):
     with open( HOPS_FILE, 'w') as outfile:
         dump(list_hops, outfile, default_flow_style=False)
+
         
 # from a hops, hops back to where it was called   
 def hop_back():
@@ -85,15 +92,16 @@ def tryhop(hop_name):
             hop_path = hop['path']
             found = True
             break
-    
-    # 2) determines if already in a hop
+
     already_hopped = False
-    for hop in list_hops['hops']:
-        if (hop['name'] == 'hop_active'):
-            if (hop['path'] != "-"):
-                print("already hopped")
-                already_hopped = True
-    
+    if (list_hops['hops'][0]['path'] == hop_name):
+        already_hopped = True
+        print("Already hopped.\tTry '" 
+            + bcolors.xyz + "hop back"
+            + bcolors.ENDC + "'\nTo get to where you hopped from."
+            )
+        print(f"{getppid()}")
+        
     # proceeds to hop if criteria 1) and 2) are met
     if (found and not already_hopped):
         try:
@@ -136,22 +144,22 @@ def show_hops(list_hops):
                   + bcolors.ENDC
                 )
         
-        
-        # prubt hops
+        # print hops
         for entry in list_hops['hops'][1:] :
             if (entry['name'] == list_hops['hops'][0]['path']):
                 print( 
-                  bcolors.GREEN + f"{entry['name']}" 
+                  bcolors.GREEN + f" {entry['name']}" 
                   + bcolors.PURPLE + "\t@ " 
                   + bcolors.ENDC
                   + bcolors.GREEN + f"{entry['path']} "
+                  + bcolors.ENDC
                 ) 
             else:
-                print( 
-                      f"{entry['name']}" 
-                      + bcolors.PURPLE + "\t@ " 
-                      + bcolors.ENDC
-                      + f"{entry['path']} "
+                print(
+                  bcolors.GRAYBG + f" {entry['name']} " 
+                  + bcolors.PURPLE + "\t@ " 
+                  + bcolors.ENDC
+                  + f"{entry['path']} "
                 )
     print( separator_string_val)
     
@@ -175,7 +183,6 @@ def set_hop(list_hops):
     
     new_hop = {'name': hop_name, 'path': hop_path}
     list_hops['hops'].append(new_hop)
-    print(new_hop)
     print( f"Setting hop {hop_name}...")
     write_hops(list_hops)
     
@@ -199,6 +206,7 @@ def delete_hop(list_hops):
     else:
         print("Error:", end=" ")
         print( f"Hop '{hop_name}' dosen't exists.")
+
 
 # resets 'hop_active' to 0
 def hop_reset():
