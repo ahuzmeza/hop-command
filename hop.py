@@ -11,18 +11,20 @@ class bcolors:
     RED    = '\033[0;31m'
     GREEN  = '\033[0;32m'
     PURPLE = '\033[0;35m'
-    xyz = '\033[0;33m'
+    GOLD   = '\033[0;33m'
     GRAYBG = '\033[0;96m'
     ENDC   = '\033[0m'
     BOLD   = '\033[1m'
 
 FILE      = Path(__file__)
 DIR       = FILE.parent
-HOPS_DIR  = DIR / "saved_hops"
-HOPS_FILE = HOPS_DIR / "saved_paths.yaml"
+DATA_DIR  = DIR / "paths_cache"
+HOPS_FILE = DATA_DIR / "saved_hops.yaml"
+HISTORY_FILE = DATA_DIR / "saved_history.yaml"
+
 
 def main():
-    print(f"B>{getppid()}")
+    print(f"hop.py PPID>{getppid()}")
 
     if (len(sys.argv) > 1 and len(sys.argv) < 4):
         list_hops = read_hops()
@@ -32,8 +34,6 @@ def main():
             return
         if (str_action == 'ls'):
             show_hops( list_hops)
-            print(f"A>{getppid()}")
-
             return
         if (str_action == 'rm'):
             delete_hop( list_hops)
@@ -68,62 +68,51 @@ def write_hops(list_hops):
 # from a hops, hops back to where it was called   
 def hop_back():
     list_hops = read_hops()
+    # check if no hop is active
+    if (list_hops['hop_active'] == '-'):
+        print("Error: No hop active.")
+        return
+    # else
+    list_hops['hop_active'] = "-"
+    write_hops(list_hops)
+    kill(getppid(), SIGHUP)
     
-    for hop in list_hops['hops']:
-        if (hop['name'] == 'hop_active'):
-            if (hop['path'] != "-"):
-                hop['path'] = "-"
-                write_hops(list_hops)
-                kill(getppid(), SIGHUP)
-                return
-    # if no hop_active to hop back
-    print("No hop active")
-
 
 # tries to hop to specified hop
 def tryhop(hop_name):
     list_hops = read_hops()
     
     # 1) finds if hop exists
-    found = False
-    for hop in list_hops['hops']:
-        if (hop['name'] == hop_name):
-            #print( f"Trying hop {hop_name} at {hop['path']}")
-            hop_path = hop['path']
-            found = True
-            break
-
-    already_hopped = False
-    if (list_hops['hops'][0]['path'] == hop_name):
-        already_hopped = True
+    if (hop_name not in list_hops):
+        print( f"Error: Hop '{hop_name}' does not exist.")
+        return
+    # 2) if already hopped 
+    if (hop_name == list_hops['hop_active']):
         print("Already hopped.\tTry '" 
-            + bcolors.xyz + "hop back"
+            + bcolors.GOLD + "hop back"
             + bcolors.ENDC + "'\nTo get to where you hopped from."
             )
-        print(f"{getppid()}")
+        return
         
     # proceeds to hop if criteria 1) and 2) are met
-    if (found and not already_hopped):
-        try:
-            # marks hop_active as true
-            for hop in list_hops['hops']:
-                if (hop['name'] == 'hop_active'):
-                    hop['path'] = hop_name
-                    break
-            write_hops(list_hops)
-            
-            hopped_from = getcwd()
-            print( f"Changing to {hop_name} @ {hop_path}...")
-            # change to hop path
-            chdir(hop_path)
-            # open new procces
-            system('zsh')
+    try:
+        hop_path = list_hops[hop_name]
+        # marks hop_active as true
+        list_hops['hop_active'] = hop_name
+        write_hops(list_hops)
+        
+        hopped_from = getcwd()
+        print( f"Changing to {hop_name} @ {hop_path}...")
+        # change to hop path
+        chdir(hop_path)
+        # open new procces
+        system('zsh')
 
-            # --> prints after 'hop back'
-            print( f"Hopped back at {hopped_from}")
-        except Exception as e:
-            print(e)
-            print( f"Error: Hop {hop_name} not found.")
+        # --> prints after 'hop back'
+        print( f"Hopped back at {hopped_from}")
+    except Exception as e:
+        print(e)
+        print( f"Error: Hop {hop_name} not found.")
 
 
 def show_hops(list_hops):
@@ -131,35 +120,36 @@ def show_hops(list_hops):
     print( separator_string_val)
 
     # if no hops exist
-    if ( len(list_hops['hops']) == 0):
+    if ( len(list_hops) == 1):
         print("\t [no 'hops' to give]")
     else:
         # print active hop or not active status
-        if (list_hops['hops'][0]['path'] == '-'):
+        if (list_hops['hop_active'] == '-'):
              print( bcolors.RED + "Inactive" + bcolors.ENDC)
         else:
             print( 
                   bcolors.GREEN + "Active: " 
-                  +  bcolors.BOLD  + f"{list_hops['hops'][0]['path']}" 
+                  +  bcolors.BOLD  + f"{list_hops['hop_active']}" 
                   + bcolors.ENDC
                 )
-        
+
+        active_hop_value = list_hops['hop_active']
+        del list_hops['hop_active']
         # print hops
-        for entry in list_hops['hops'][1:] :
-            if (entry['name'] == list_hops['hops'][0]['path']):
-                print( 
-                  bcolors.GREEN + f" {entry['name']}" 
-                  + bcolors.PURPLE + "\t@ " 
-                  + bcolors.ENDC
-                  + bcolors.GREEN + f"{entry['path']} "
-                  + bcolors.ENDC
-                ) 
+        for key in list_hops:
+            if (list_hops[key] == active_hop_value):
+                hop_name_color = bcolors.GREEN
+                hop_path_color = bcolors.GREEN
             else:
-                print(
-                  bcolors.GRAYBG + f" {entry['name']} " 
-                  + bcolors.PURPLE + "\t@ " 
-                  + bcolors.ENDC
-                  + f"{entry['path']} "
+                hop_name_color = bcolors.GRAYBG
+                hop_path_color = bcolors.ENDC
+            print(
+                  hop_name_color 
+                  + f" {key} " +
+                  bcolors.PURPLE 
+                  + "\t@ " +
+                  hop_path_color 
+                  + f"{list_hops[key]} "
                 )
     print( separator_string_val)
     
@@ -173,17 +163,14 @@ def set_hop(list_hops):
     hop_name = sys.argv[2]
     # check if name exists already
     # return - if duplicate
-    for hop in list_hops['hops']:
-        if (hop['name'] == hop_name):
-            print("Error:", end=" ")
-            print( f"Hop '{hop_name}' already exists.")
-            return
-        
-    hop_path = getcwd()
-    
-    new_hop = {'name': hop_name, 'path': hop_path}
-    list_hops['hops'].append(new_hop)
+    if (hop_name in list_hops):
+        print( f"Error: Hop '{hop_name}' already exists.")
+        return
+       
     print( f"Setting hop {hop_name}...")
+    # create new hop entry in list_hops
+    # hop_name: _current_path_
+    list_hops.update( {hop_name: getcwd()} )
     write_hops(list_hops)
     
 
@@ -194,14 +181,9 @@ def delete_hop(list_hops):
        return
     
     hop_name = sys.argv[2]
-    foundBy_hop_name = False
-    for hop in list_hops['hops']:
-        if (hop['name'] == hop_name):
-            list_hops['hops'].remove(hop)
-            foundBy_hop_name = True
-    
-    if (foundBy_hop_name):
+    if (hop_name in list_hops):
         print( f"Deleting hop {hop_name}...")
+        del list_hops[hop_name]
         write_hops(list_hops)
     else:
         print("Error:", end=" ")
@@ -211,23 +193,40 @@ def delete_hop(list_hops):
 # resets 'hop_active' to 0
 def hop_reset():
     list_hops = read_hops()
-    for hop in list_hops['hops']:
-        if (hop['name'] == 'hop_active'):
-            hop['path'] = "-"
-            write_hops(list_hops)
-            return
+    list_hops['hop_active'] = "-"
+    write_hops(list_hops)
 
 
 if __name__ == '__main__':
     main()
 
 
+# change list_hops to dictionary name,path
+# ccreate shell alias witch switch case to call .p
+# create hop_history of each location where hop was called
+    # hop back will hop to previos_hop in hop_history
 
+ 
+"""
+2 args]
+hop set      _name_  # uses python w/sane to set a hop named _name_
+hop rm       _name_  # uses python w/sane to remove a hop named _name_
+hop rm       history # uses python w/sane to delete all paths in history
+hop ls       _name_  # uses python w/sane to list all hops
 
+1 arg]
+hop history          # uses python w/sane to list history
 
-
-
-
+hop _name_           # uses shell function to cd to _name_'s path
+hop back             # uses shell function to cd to previous hop
+"""
+""" Restricted: 
+    set 
+    rm 
+    history 
+    ls
+    back 
+"""
 
 
 
