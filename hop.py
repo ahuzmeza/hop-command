@@ -8,21 +8,20 @@ from yaml.error import YAMLError
 from pathlib import Path
 
 class bcolors:
-    RED    = '\033[0;31m'
-    GREEN  = '\033[0;32m'
-    PURPLE = '\033[0;35m'
+    RED       = '\033[0;31m'
+    GREEN     = '\033[0;32m'
+    PURPLE    = '\033[0;35m'
     LIGHTBLUE = '\033[0;96m'
-    BGGRAY = '\033[0;100m'
-    GOLD   = '\033[0;33m'
-    ENDC   = '\033[0m'
-    BOLD   = '\033[1m'
+    BGGRAY    = '\033[0;100m'
+    GOLD      = '\033[0;33m'
+    ENDC      = '\033[0m'
+    BOLD      = '\033[1m'
 
 FILE      = Path(__file__)
 DIR       = FILE.parent
 DATA_DIR  = DIR / "paths_cache"
 HOPS_FILE = DATA_DIR / "saved_hops.yaml"
 HISTORY_FILE = DATA_DIR / "saved_history.yaml"
-
 
 def main():
     if (len(sys.argv) > 1 and len(sys.argv) < 4):
