@@ -6,14 +6,14 @@ Describe
 1) clone this repository ___?where?___ you like
 2) cd into hop-command directory
 2) manually change python shabang
-#  OR
-run:$ sh setup.sh
+#   OR
+run:$   sh setup.sh
 
 This does:
 - echos your python shabang into hop.py
 - installs pyyaml with pip3
 - makes hop.py exacutable by setting permission +x
-3) add following to shell config file. Eg: ~/.bashrc, ~/.zshrc etc
+4) add following to shell config file. Eg: ~/.bashrc, ~/.zshrc etc
 
         # # Hop command ###################################################
         # export PATH=$PATH:_____?where?____/hop-command
