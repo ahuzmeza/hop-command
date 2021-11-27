@@ -1,4 +1,4 @@
-#! /Users/alinhuzmezan/.pyenv/shims/python3
+#! /Users/alinhuzmezan/.pyenv/shims/python
 import sys
 from os import getcwd
 from yaml import dump, safe_load
@@ -248,3 +248,5 @@ if __name__ == '__main__':
     __init__() # creates needed directories and files if not exist
     main()
 #eOF file.py
+
+
