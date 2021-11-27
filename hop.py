@@ -248,5 +248,3 @@ if __name__ == '__main__':
     __init__() # creates needed directories and files if not exist
     main()
 #eOF file.py
-
-
