@@ -6,7 +6,7 @@ Describe
 1) clone this repository ___?where?___ you like
 2) cd into hop-command directory
 2) manually change python shabang
-#   OR
+OR
 run:$   sh setup.sh
 
 This does:
