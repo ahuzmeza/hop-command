@@ -3,17 +3,16 @@
 Describe
 
 ## Configure
- *1)* Clone this repository ___?where?___ you like.
- *2)* 'cd' into hop-command directory.
- *2)* 
- - a) Manually change python shabang in hop.py.
-#### OR
- - b) run:$   sh setup.sh
-
-#### This does:
-- > Echos your python shabang into hop.py
-- > Installs pyyaml with pip3
-- > Makes hop.py exacutable by setting permission +x
+   *1)* Clone this repository ___?where?___ you like.
+   
+   *2)* Add hop.py shabang.
+   *3)* Install 'pyyaml'
+   *4)* Set permission
+   - a) Manually 
+   - b) run:$   sh setup.sh
+   > This does:
+   - > Echos your python shabang into hop.py
+   - > Installs pyyaml with pip3
 
 **4)** Add following to shell config file. Eg: ~/.bashrc, ~/.zshrc etc
 

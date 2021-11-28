@@ -1,4 +1,5 @@
-#! /Users/alinhuzmezan/.pyenv/shims/python
+#! /usr/local/bin/python3
+#! /usr/bin/python3
 import sys
 from os import getcwd
 from yaml import dump, safe_load
@@ -61,8 +62,7 @@ def main():
             return handle_error('invalid_args')
         exit(hop_to(str_action))
     else:
-        handle_error('invalid_args')
-        return (-1)
+        return (handle_error('invalid_args'))
 
 
 # reads hops from HOPS_FILE
