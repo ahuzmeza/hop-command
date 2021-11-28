@@ -2,9 +2,10 @@
 
 # echos python shabang into hop.py
 echo -n "->] Prefixing 'hop.py' with python3 shebang...|"
-STRING="$(which python3)"
+NEEDLE="$(which python3)"
+SRC="#! /usr/local/bin/python3"
 while read a; do
-        echo ${a//'#! /usr/local/bin/python3'/$STRING}
+        echo ${a//$SRC/$NEEDLE}
 done < hop.py > hop.py.t
 mv hop.py{.t,}
 echo "... Finished"
