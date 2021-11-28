@@ -7,7 +7,7 @@ so you can easily cd to your favourite paths.
 ### Using **`sh setup.sh`**. :fish:
 ##### 1) Clone and cd to directory.
 ##### 2) Use: **`sh setup.sh`**.
-##### *) Changes hop.py permission using **`chmod +x hop.py`**.
+##### *) Change hop.py permission using **`chmod +x hop.py`** if needed.
 ##### 3) Restart your terminal. :heavy_check_mark:
 - This does:
 
