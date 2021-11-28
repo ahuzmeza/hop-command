@@ -1,0 +1,25 @@
+# ########################################################################### #
+#																			  #
+#	EDIT ----?where?----														  #
+#		and source this file to shell										  #
+#																			  #
+# ########################################################################### #
+export PATH=\$PATH:-----?where?----
+
+# hop.py returns:
+#       1) output to be printed  => print output
+#       2) a path to a directory => cd to that path
+hop ()
+{
+        HOP=\$(hop.py \$@ 2>&1)
+        
+        if [ -d "\$HOP" ]; then
+                cd "\${HOP}"
+                echo "Arrived @ $PWD"
+        else
+                echo "\$HOP"
+        fi
+}
+# --------------------------------------------------------------
+
+
