@@ -6,7 +6,8 @@ so you can easily cd to your favourite paths.
 ## Install & Configure:
 ### Using **`sh setup.sh`**. :fish:
 ##### 1) Clone and cd to directory.
-##### 2) Run:$ **`sh setup.sh`**.
+##### 2) Use: **`sh setup.sh`**.
+##### *) Changes hop.py permission using **`chmod +x hop.py`**.
 ##### 3) Restart your terminal. :heavy_check_mark:
 - This does:
 
@@ -19,10 +20,11 @@ so you can easily cd to your favourite paths.
 
 ### Manually:
 ##### 1) Clone this repository ----?where?---- you like.
-##### *) Change hop.py #!shabang if needed
+##### *) Change hop.py #!shabang if needed.
+##### *) Change hop.py permission if needed.
 ##### 2) Make sure you have 'pyyaml' installed.
-##### 3) Add following to shell config file. Eg: ~/.bashrc, ~/.bash_profile, ~/.zshrc, etc
-##### And edit ----?where?----
+##### 3) Add following to shell config file. Eg: ~/.bashrc, ~/.bash_profile, ~/.zshrc, etc.
+##### And edit ----?where?----.
         
         # Hop command --------------------------------------------------"
         export PATH=$PATH:----?where?----
