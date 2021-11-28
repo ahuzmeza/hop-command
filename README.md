@@ -10,13 +10,11 @@ so you can easily cd to your favourite paths.
 ##### 3) restart your terminal  :heavy_check_mark:
 - This does:
 
-> Echos your python shabang into hop.py
-
 > Installs pyyaml with pip3
 
 > Creates 'shell_hop_source' file
 
-> Source file to ~/.bashrc
+> Appends 'Sources file' to ~/.bashrc
 
 
 ### Manually:
