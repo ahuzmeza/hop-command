@@ -22,6 +22,7 @@ STRING="/hop_shell_source"
 REZ_STRING=$(grep $STRING ~/.bashrc)
 echo "--------------------------------"
 echo $REZ_STRING
+echo "--------------------------------"
 if [ -z REZ_STRING ]; then
         echo "... Skipped. Already Sourced"
 else
