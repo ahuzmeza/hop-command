@@ -3,10 +3,10 @@
 Describe
 
 ## Configure
-   **1)** Clone this repository ___?where?___ you like.
-   **2)** Add hop.py shabang.
-   **3)** Install 'pyyaml'
-   **4)** Set permission
+**1)** Clone this repository ___?where?___ you like.
+**2)** Add hop.py shabang.
+**3)** Install 'pyyaml'
+**4)** Set permission
 ### How?
    a) Manually 
    b) run:$   sh setup.sh
