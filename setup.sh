@@ -18,7 +18,7 @@ echo "... Finished"
 
 # Append sourcing file to ~/.bashrc
 echo -n "->] Appending source to '~/.bashrc'...|"
-STRING="$PWD/hop_shell_source"
+STRING="/hop_shell_source"
 REZ_STRING=$(grep $STRING ~/.bashrc)
 if [ -z REZ_STRING ]; then
         echo "... Skipped. Already Sourced"
