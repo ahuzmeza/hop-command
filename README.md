@@ -3,20 +3,20 @@
 Describe
 
 ## Configure
-   *1)* Clone this repository ___?where?___ you like.
-   
-   *2)* Add hop.py shabang.
-   *3)* Install 'pyyaml'
-   *4)* Set permission
-   - a) Manually 
-   - b) run:$   sh setup.sh
-   > This does:
+   **1)** Clone this repository ___?where?___ you like.
+   **2)** Add hop.py shabang.
+   **3)** Install 'pyyaml'
+   **4)** Set permission
+### How?
+   a) Manually 
+   b) run:$   sh setup.sh
+   - > This does:
    - > Echos your python shabang into hop.py
    - > Installs pyyaml with pip3
 
 **4)** Add following to shell config file. Eg: ~/.bashrc, ~/.zshrc etc
 
-        # Hop command ###################################################
+        # Hop command --------------------------------------------------
         export PATH=$PATH:_____?where?____/hop-command
         # hop.py returns:
         #       1) output to be printed  => print output
@@ -33,4 +33,4 @@ Describe
                         echo "$HOP"
                 fi
         }
-        # ########################################################################
+        # --------------------------------------------------------------
