@@ -19,7 +19,7 @@ so you can easily cd to your favourite paths.
 
 > Tries to set permission to hop.py
 
-> Tries to restart terminal by sourcing ~/.nashrc
+> Tries to restart terminal by sourcing ~/.bashrc
 
 
 ### Manually:
