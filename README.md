@@ -8,7 +8,8 @@ Describe
 3. Install 'pyyaml'.
 
 ### How?
-   a) Manually 
+   a) Manually
+   
    b) run:$   sh setup.sh
    - This does:
    - > Echos your python shabang into hop.py
