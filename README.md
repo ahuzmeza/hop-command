@@ -4,10 +4,10 @@ A terminal command that lets you save directory paths as 'hops',
 so you can easily cd to your favourite paths.
 
 ## Install & Configure:
-### Using **`sh setup.sh`** :fish:
-#### 1) clone and cd to directory
-#### 2) run:5 **`sh setup.sh`**
-#### 3) restart your terminal :heavy_check_mark:
+### Using **`sh setup.sh`**. :fish:
+##### 1) clone and cd to directory
+##### 2) run:5 **`sh setup.sh`**
+##### 3) restart your terminal  :heavy_check_mark:
 - This does:
 
 > Echos your python shabang into hop.py
@@ -20,25 +20,10 @@ so you can easily cd to your favourite paths.
 
 
 ### Manually:
-#### 1) Clone this repository ___?where?___ you like.
-#### 2) Install 'pyyaml'.
-#### 3) 
-
-
-
-
-   a) Manually
-
-   b) run:$ **`sh setup.sh`**
-- This does:
-
-> Echos your python shabang into hop.py
-
-> Installs pyyaml with pip3
-
-#### 3) Add following to shell config file. Eg: ~/.bashrc, ~/.zshrc etc
-   
-   **And replace** -----?where?----- (see step 1.)
+##### 1) Clone this repository ----?where?---- you like.
+##### 2) Install 'pyyaml'.
+##### 3) Add following to shell config file. Eg: ~/.bashrc, ~/.zshrc etc
+##### And edit ----?where?---- (see step 1.)
 
         # Hop command --------------------------------------------------
         export PATH=$PATH:-----?where?-----/hop-command
