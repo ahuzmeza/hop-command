@@ -24,14 +24,13 @@ so you can easily cd to your favourite paths.
 
 ### Manually:
 ##### 1) Clone this repository ----?where?---- you like.
-##### *) Change hop.py #!shabang if needed.
 ##### *) Change hop.py permission if needed.
 ##### 2) :exclamation:Have 'pyyaml' installed.
 ##### 3) Place the following in shell config file.  Eg: ~/.bashrc, ~/.bash_profile, ~/.zshrc, etc.
     # Hop command --------------------------------------------------
-    
+
     source ----?where?----/hop_shell_source
-    
+
     # --------------------------------------------------------------
 
 
