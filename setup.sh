@@ -4,7 +4,7 @@
 echo -n "->] Prefixing 'hop.py' with python3 shebang...|"
 STRING="$(which python3)"
 while read a; do
-        echo ${a//----?where?----/$STRING}
+        echo ${a//'#! /usr/local/bin/python3'/$STRING}
 done < hop.py > hop.py.t
 mv hop.py{.t,}
 echo "... Finished"
