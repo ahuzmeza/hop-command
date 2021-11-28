@@ -29,7 +29,7 @@ echo "... Finished"
 # Append sourcing file to ~/.bashrc
 echo -n "->] Appending source to '~/.bashrc'...|"
 STRING="source $PWD/hop_shell_source"
-REZ_STRING:$(grep $STRING ~/.bashrc)
+REZ_STRING:$(grep "$STRING" ~/.bashrc)
 if [ -z REZ_STRING ]; then
         echo "# Hop command --------------------------------------------------
         source $PWD/hop_shell_source" >> ~/.bashrc
