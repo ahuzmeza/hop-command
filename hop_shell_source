@@ -4,7 +4,7 @@
 #		and source this file to shell										  #
 #																			  #
 # ########################################################################### #
-export PATH=\$PATH:-----?where?----
+export PATH=\$PATH:----?where?----
 
 # hop.py returns:
 #       1) output to be printed  => print output
