@@ -31,3 +31,6 @@ so you can easily cd to your favourite paths.
                 # Hop command --------------------------------------------------
                 source $PWD/hop_shell_source
                 # --------------------------------------------------------------
+
+
+
