@@ -31,12 +31,12 @@ echo -n "->] Appending source to '~/.bashrc'...|"
 STRING="$PWD/hop_shell_source"
 REZ_STRING=$(grep $STRING ~/.bashrc)
 if [ -z REZ_STRING ]; then
+        echo "... Skipped. Already Sourced"
+else
         echo "# Hop command --------------------------------------------------
         source $PWD/hop_shell_source" >> ~/.bashrc
         echo "# --------------------------------------------------------------" >> ~/.bashrc
         echo "... Finished"
-else
-        echo "... Skipped. Already Sourced"
 fi
 
 
