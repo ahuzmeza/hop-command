@@ -2,13 +2,13 @@
 ## Description:
 A filesystem mobility tool for the shell.
 
-`hop set _name_` saves a 'hop' named: _name__
+`hop set _name_` saves a named 'hop' poinring to current dir.
 
-`hop _name_` cd's you to its path 
+`hop _name_` cd's you to its path.
 
-`hop ls` lists all available hops 
+`hop ls` lists all available hops.
 
-> see `hop help` for details
+> see `hop help` for details.
 
 ## Install & Configure:
 ### Easy way:  :fish:
