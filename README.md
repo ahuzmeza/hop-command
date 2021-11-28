@@ -1,9 +1,9 @@
 # hop-command
-## Description
+## Description:
 A terminal command that lets you save directory paths as 'hops',
 so you can easily cd to your favourite paths.
 
-## Install & Configure
+## Install & Configure:
 #### 1) Clone this repository ___?where?___ you like.
 #### 2) Add hop.py shabang.
 #### 3) Install 'pyyaml'.
@@ -11,7 +11,8 @@ so you can easily cd to your favourite paths.
 ### How?
    a) Manually
 
-   b) run:$   sh setup.sh
+   b) run:$ 
+   'sh setup.sh'
    - This does:
 
 > Echos your python shabang into hop.py
