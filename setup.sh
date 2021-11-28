@@ -9,10 +9,12 @@ echo "... Finished."
 
 # Edits shell_hop_source file to include current path as export
 echo -n "->] Exporting 'hop.py' to \$PAThH...|"
-while read a; do
-        echo ${a//----?where?----/$PWD}
-done < hop_shell_source > hop_shell_source.t
-mv hop_shell_source{.t,}
+1{x;s/^/first/;x;}
+1,/foo/{x;/first/s///;x;s/----?where?----/$PWD/;}
+# while read a; do
+#         echo ${a//----?where?----/$PWD}
+# done < hop_shell_source > hop_shell_source.t
+# mv hop_shell_source{.t,}
 echo "... Finished"
 
 
@@ -20,9 +22,7 @@ echo "... Finished"
 echo -n "->] Appending source to '~/.bashrc'...|"
 STRING="/hop_shell_source"
 REZ_STRING=$(grep $STRING ~/.bashrc)
-echo "--------------------------------"
 echo $REZ_STRING
-echo "--------------------------------"
 if [ -z "$REZ_STRING" ]; then
         echo "# Hop command --------------------------------------------------
         source $PWD/hop_shell_source" >> ~/.bashrc
