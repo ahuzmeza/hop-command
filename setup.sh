@@ -1,4 +1,4 @@
-
+#! /bin/bash
 
 # echos python shabang into hop.py
 echo -n "->] Prefixing 'hop.py' with python3 shebang...|"
