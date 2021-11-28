@@ -147,9 +147,10 @@ def hop_ls(list_hops):
             print(rez_string)
         # 3) print last hopped from path
         if (previous_path != None):
-            print("\n"+Colors.BGGRAY+"Last Hopped From:"+Colors.ENDC+f"\n {previous_path}")
+            rez_string = '"\n"+Colors.BGGRAY+"Last Hopped From:"+Colors.ENDC+f"\n {previous_path}"'
         else:
-            print(Colors.RED+"\nNot hopped yet"+Colors.ENDC)
+            rez_string = 'Colors.RED+"\nNot hopped yet"+Colors.ENDC'
+        print(rez_string)
 
     print( separator_string_val)
     return (0)
