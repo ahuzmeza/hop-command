@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 import sys
 from os import getcwd
 from yaml import dump, safe_load
@@ -143,14 +143,19 @@ def hop_ls(list_hops):
                 hop_name_color = Colors.LIGHTBLUE
                 hop_path_color = Colors.ENDC
                 separator_color = Colors.PURPLE
-            rez_string='hop_name_color+f"{key}"+separator_color+"\t@ "+hop_path_color+f"{list_hops[key]} "+Colors.ENDC'
-            print(rez_string)
+            print(hop_name_color 
+                  + f" {key} " +
+                  separator_color
+                  + "\t@ " +
+                  hop_path_color 
+                  + f"{list_hops[key]} " +
+                  Colors.ENDC
+                )
         # 3) print last hopped from path
         if (previous_path != None):
-            rez_string = '"\n"+Colors.BGGRAY+"Last Hopped From:"+Colors.ENDC+f"\n {previous_path}"'
+            print("\n"+Colors.BGGRAY+"Last Hopped From:"+Colors.ENDC+f"\n {previous_path}")
         else:
-            rez_string = 'Colors.RED+"\nNot hopped yet"+Colors.ENDC'
-        print(rez_string)
+            print(Colors.RED+"\nNot hopped yet"+Colors.ENDC)
 
     print( separator_string_val)
     return (0)
@@ -168,8 +173,7 @@ def hop_set(list_hops):
         handle_error('hop_already_exists')
         return (0)
     # if 1) and 2) are met, set hop
-    rez_string = 'Setting hop "+f"{hop_name}" ...'
-    print(rez_string)
+    print( f"Setting hop '{hop_name}' ...")
     # create new hop entry in list_hops like: "hop_name": "_current_path_"
     list_hops.update( {hop_name: getcwd()} )
     return (write_hops(list_hops))
@@ -179,8 +183,7 @@ def hop_rm(list_hops):
     hop_name = sys.argv[2]
     # checks if hop name exists and is not restricted
     if (hop_name in list_hops and hop_name != 'history_prev_hop'):
-        rez_string = '"Deleting hop " + f"{hop_name}" ...'
-        print(rez_string)
+        print( f"Deleting hop '{hop_name}' ...")
         del list_hops[hop_name]
         return (write_hops(list_hops))
     else:
