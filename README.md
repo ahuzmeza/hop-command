@@ -2,9 +2,12 @@
 ## Description:
 A filesystem mobility tool for the shell.
 
-`hop set _name_` saves a 'hop' named _name_
+`hop set _name_` saves a 'hop' named: __name__
+
 `hop _name_` lets you cd to the saved path and
+
 `hop ls` lists all available hops 
+
 > see `hop help` for details
 
 ## Install & Configure:
