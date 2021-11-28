@@ -1,7 +1,12 @@
 # echos python shabang into hop.py
 echo -n "->] prefixing hop.py with python shebang...|"
-(echo "#! $(which python3)" && cat hop.py) > tmp && mv tmp hop.py
+STRING="$(which python3)"
+while read a; do
+        echo ${a//----?where?----/$STRING}
+done < hop.py > hop.py.t
+mv hop.py{.t,}
 echo "... Finished"
+
 
 
 # installs pyyaml with pip
