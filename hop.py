@@ -179,7 +179,7 @@ def hop_rm(list_hops):
     hop_name = sys.argv[2]
     # checks if hop name exists and is not restricted
     if (hop_name in list_hops and hop_name != 'history_prev_hop'):
-        print( f"Deleting hop '{hop_name}' ...")
+        print(f"Deleting hop '{hop_name}' ...")
         del list_hops[hop_name]
         return (write_hops(list_hops))
     else:
