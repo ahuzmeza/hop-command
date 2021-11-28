@@ -9,7 +9,7 @@ echo "... Finished."
 
 # Edits shell_hop_source file to include current path as export
 echo -n "->] Exporting 'hop.py' to \$PAThH...|"
-$ { rm data.txt && awk '{gsub("----?where?----", $PWD, $0); print}' > hop_shell_source; } < hop_shell_source
+$(rm data.txt && awk '{gsub("----?where?----", $PWD, $0); print}' > hop_shell_source; ) < hop_shell_source
 
 # while read a; do
 #         echo ${a//----?where?----/$PWD}
