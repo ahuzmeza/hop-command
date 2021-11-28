@@ -8,13 +8,10 @@ echo "... Finished."
 
 
 # Edits shell_hop_source file to include current path as export
-echo -n "->] Exporting 'hop.py' to \$PAThH...|"
-sed -i "s/----?where?----/'$PWD'/" hop_shell_source
-
-# while read a; do
-#         echo ${a//----?where?----/$PWD}
-# done < hop_shell_source > hop_shell_source.t
-# mv hop_shell_source{.t,}
+echo -n "->] Creating hop_shell_source...|"
+echo "# HOP COMMAND ---------------------------------------------------" > hop_shell_source
+echo "export PATH=\$PATH:$PWD" >> hop_shell_source
+cat hop_shell_source_tmp >> hop_shell_source
 echo "... Finished"
 
 
