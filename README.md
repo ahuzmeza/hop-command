@@ -11,8 +11,7 @@ so you can easily cd to your favourite paths.
 ### How?
    a) Manually
 
-   b) run:$ 
-   'sh setup.sh'
+   b) run:$ 'sh setup.sh'
    - This does:
 
 > Echos your python shabang into hop.py
