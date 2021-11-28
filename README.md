@@ -4,11 +4,11 @@ A terminal command that lets you save directory paths as 'hops',
 so you can easily cd to your favourite paths.
 
 ## Install & Configure:
-### Easy way: :fish:
+### Easy way:  :fish:
 ##### 1) Clone and cd to directory.
-##### 2) Use: **`sh setup.sh`**.
+##### 2) Use: $ **`sh setup.sh`**.
 ##### *) Change hop.py permission using **`chmod +x hop.py`** if needed.
-##### *) Restart your terminal if needed. :heavy_check_mark:
+##### +) Restart terminal :heavy_check_mark:
 - This does:
 
 > Installs pyyaml with pip3
@@ -28,8 +28,11 @@ so you can easily cd to your favourite paths.
 ##### *) Change hop.py permission if needed.
 ##### 2) Make sure you have 'pyyaml' installed.
 ##### 3) Add following to shell config file. Eg: ~/.bashrc, ~/.bash_profile, ~/.zshrc, etc.
-##### And edit ----?where?----.
+###### or source 'hop_shell_source' file in shell config.
+###### And edit ----?where?----.
         
+__in: /hop-command/hop_shell_source:
+
         # Hop command --------------------------------------------------"
         export PATH=$PATH:----?where?----
         hop()

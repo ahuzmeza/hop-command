@@ -1,9 +1,3 @@
-# changes hop.py permission +x
-echo -n "-> Setting execute permission on hop.py... "
-chmod +x hop.py
-echo "<- Finished"
-
-
 # echos python shabang into hop.py
 echo -n "-> prefixing hop.py with python shebang... "
 (echo "#! $(which python3)" && cat hop.py) > tmp && mv tmp hop.py
@@ -16,39 +10,37 @@ pip3 install pyyaml
 echo "<- Finished."
 
 
-# creates shell_hop_source file
-echo -n "-> Creating shell_hop_source file... "
-echo "# Hop command --------------------------------------------------
-export PATH=\$PATH:$PWD
-# hop.py returns:
-#       1) output to be printed  => print output
-#       2) a path to a directory => cd to that path
-hop ()
-{
-        HOP=\$(hop.py \$@ 2>&1)
-        
-        if [ -d "\$HOP" ]; then
-                cd "\${HOP}"
-                echo "Arrived @ $PWD"
-        else
-                echo "\$HOP"
-        fi
-}
-# --------------------------------------------------------------" > hop_shell_source
-echo "<- Finished"
+# Edits shell_hop_source file to include current path as export
+echo "->] exporting hop.py to \$PAThH ... "
+while read a; do
+        echo ${a//----?where?----/$PWD}
+done < hop_shell_source_tmp > hop_shell_source.t
+mv hop_shell_source{.t,}
+echo "... Finished"
+
 
 
 # source file to ~/.bashrc
 echo -n "-> Appending source to ~/.bashrc... "
+FILE="~/.bashrc"
+STRING="source $PWD/hop_shell_source"
+if [ -z $(grep "$STRING" "$FILE") ]; then
+        echo "... Skipped. Already Sourced"
+else
+        echo "# Hop command --------------------------------------------------
+        source $PWD/hop_shell_source" >> ~/.bashrc
+        echo "# --------------------------------------------------------------" >> ~/.bashrc
+fi
+echo "<- Finished"
 
-echo "# Hop command --------------------------------------------------
-source $PWD/hop_shell_source" >> ~/.bashrc
-echo "# --------------------------------------------------------------" >> ~/.bashrc
 
+# changes hop.py permission +x
+echo -n "-> Setting execute permission on hop.py... "
+chmod +x hop.py
 echo "<- Finished"
 
 
 # restarts terminal
-echo -n "-> Restarting terminal by sourceing bashrc... "
+echo -n "-> Atempting to restart terminal by sourceing bashrc... "
 source ~/.bashrc
 echo "<- Finished"
