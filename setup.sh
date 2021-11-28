@@ -2,10 +2,13 @@
 echo -n "-> Setting execute permission on hop.py... "
 chmod +x hop.py
 echo "<- Finished"
+
+
 # echos python shabang into hop.py
 echo -n "-> prefixing hop.py with python shebang... "
 (echo "#! $(which python3)" && cat hop.py) > tmp && mv tmp hop.py
 echo "<- Finished"
+
 
 # installs pyyaml with pip
 echo "-> Installing pyyaml..."
@@ -34,6 +37,7 @@ hop ()
 # --------------------------------------------------------------" > hop_shell_source
 echo "<- Finished"
 
+
 # source file to ~/.bashrc
 echo -n "-> Appending source to ~/.bashrc... "
 
@@ -43,7 +47,8 @@ echo "# --------------------------------------------------------------" >> ~/.ba
 
 echo "<- Finished"
 
+
 # restarts terminal
-echo "-> Restarting terminal by sourceing bashrc... "
+echo -n "-> Restarting terminal by sourceing bashrc... "
 source ~/.bashrc
 echo "<- Finished"
