@@ -22,15 +22,15 @@ hop ()
                 echo "\$HOP"
         fi
 }
-# --------------------------------------------------------------\n" > hop_shell_source
+# --------------------------------------------------------------" > hop_shell_source
 echo "<- Finished"
 
 # source file to ~/.bashrc
 echo -n "-> Appending source to ~/.bashrc... "
 
 echo "# Hop command --------------------------------------------------
-source $PWD/hop_shell_source" >> ~/.bashrc 
-\# --------------------------------------------------------------" >> ~/.bashrc
+source $PWD/hop_shell_source" >> ~/.bashrc
+echo "# --------------------------------------------------------------" >> ~/.bashrc
 
 echo "<- Finished"
 
