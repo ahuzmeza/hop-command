@@ -1,11 +1,12 @@
 # hop-command
 ## Description
-Describe
+A terminal command that lets you save directory paths as 'hops',
+so you can easily cd to your favourite paths.
 
 ## Install & Configure
-### 1) Clone this repository ___?where?___ you like.
-### 2) Add hop.py shabang.
-### 3) Install 'pyyaml'.
+#### 1) Clone this repository ___?where?___ you like.
+#### 2) Add hop.py shabang.
+#### 3) Install 'pyyaml'.
 
 ### How?
    a) Manually
@@ -18,7 +19,7 @@ Describe
 > Installs pyyaml with pip3
 
 
-4. Add following to shell config file. Eg: ~/.bashrc, ~/.zshrc etc
+#### 4) Add following to shell config file. Eg: ~/.bashrc, ~/.zshrc etc
    
    And replace _____?where?_____ (see step 1.)
 
