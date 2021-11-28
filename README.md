@@ -11,9 +11,9 @@ Describe
 - b) run:$   sh setup.sh
 
 #### This does:
-> Echos your python shabang into hop.py
-> Installs pyyaml with pip3
-> Makes hop.py exacutable by setting permission +x
+- > Echos your python shabang into hop.py
+- > Installs pyyaml with pip3
+- > Makes hop.py exacutable by setting permission +x
 
 **4)** Add following to shell config file. Eg: ~/.bashrc, ~/.zshrc etc
 
