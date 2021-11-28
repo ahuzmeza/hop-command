@@ -2,7 +2,7 @@
 
 # echos python shabang into hop.py
 echo -n "->] Prefixing 'hop.py' with python3 shebang...|"
-NEEDLE="$(which python3)"
+NEEDLE=$(which python3)
 SRC="#! /usr/local/bin/python3"
 while read a; do
         echo ${a//$SRC/$NEEDLE}
@@ -26,7 +26,7 @@ mv hop_shell_source{.t,}
 echo "... Finished"
 
 
-# source file to ~/.bashrc
+# Append sourcing file to ~/.bashrc
 echo -n "->] Appending source to '~/.bashrc'...|"
 STRING="source $PWD/hop_shell_source"
 REZ_STRING:$(grep $STRING ~/.bashrc)
