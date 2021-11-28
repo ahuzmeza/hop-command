@@ -6,9 +6,9 @@ so you can easily cd to your favourite paths.
 ## Install & Configure:
 ### Easy way:  :fish:
 ##### 1) Clone and cd to directory.
-##### 2) Use: $ **`sh setup.sh`**.
+##### 2) Use: $**`sh setup.sh`**.
 ##### *) Change hop.py permission using **`chmod +x hop.py`** if needed.
-##### +) Restart terminal :heavy_check_mark:
+##### :wavy_dash:) Restart terminal :heavy_check_mark:
 - This does:
 
 > Installs pyyaml with pip3
@@ -26,11 +26,11 @@ so you can easily cd to your favourite paths.
 ##### 1) Clone this repository ----?where?---- you like.
 ##### *) Change hop.py #!shabang if needed.
 ##### *) Change hop.py permission if needed.
-##### 2) Make sure you have 'pyyaml' installed.
+##### 2) :exclamation:Have 'pyyaml' installed.
 ##### 3) Place the following in shell config file.  Eg: ~/.bashrc, ~/.bash_profile, ~/.zshrc, etc.
-                # Hop command --------------------------------------------------
-                source $PWD/hop_shell_source
-                # --------------------------------------------------------------
+        # Hop command --------------------------------------------------
+        source ----?where?----/hop_shell_source
+        # --------------------------------------------------------------
 
 
 
