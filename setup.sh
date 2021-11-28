@@ -14,7 +14,7 @@ echo "... Finished."
 echo "->] exporting hop.py to \$PAThH ... "
 while read a; do
         echo ${a//----?where?----/$PWD}
-done < hop_shell_source_tmp > hop_shell_source.t
+done < hop_shell_source > hop_shell_source.t
 mv hop_shell_source{.t,}
 echo "... Finished"
 
