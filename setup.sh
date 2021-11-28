@@ -1,7 +1,12 @@
+# echos python shabang into hop.py
+echo -n "-> prefixing hop.py with python shebang"
+(echo "#! $(which python3)" && cat hop.py) > tmp && mv tmp hop.py
+echo "<- Finished"
+
 # installs pyyaml with pip
 echo "-> Installing pyyaml..."
 pip3 install pyyaml
-echo "-> Finished."
+echo "<- Finished."
 
 
 # creates shell_hop_source file
