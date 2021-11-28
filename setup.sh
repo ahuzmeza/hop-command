@@ -24,12 +24,16 @@ echo "--------------------------------"
 echo $REZ_STRING
 echo "--------------------------------"
 if [ -n REZ_STRING ]; then
-        echo "... Skipped. Already Sourced"
-else
         echo "# Hop command --------------------------------------------------
         source $PWD/hop_shell_source" >> ~/.bashrc
         echo "# --------------------------------------------------------------" >> ~/.bashrc
         echo "... Finished"
+else
+        echo "... Skipped. Already Sourced"
+       
+       
+       
+       
 fi
 
 
