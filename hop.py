@@ -143,14 +143,7 @@ def hop_ls(list_hops):
                 hop_name_color = Colors.LIGHTBLUE
                 hop_path_color = Colors.ENDC
                 separator_color = Colors.PURPLE
-            print(hop_name_color 
-                  + f" {key} " +
-                  separator_color
-                  + "\t@ " +
-                  hop_path_color 
-                  + f"{list_hops[key]} " +
-                  Colors.ENDC
-                )
+            print(hop_name_color+f"{key}"+separator_color+"\t@ "+hop_path_color+f"{list_hops[key]} "+Colors.ENDC)
         # 3) print last hopped from path
         if (previous_path != None):
             print("\n"+Colors.BGGRAY+"Last Hopped From:"+Colors.ENDC+f"\n {previous_path}")
