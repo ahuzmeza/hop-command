@@ -23,7 +23,7 @@ REZ_STRING=$(grep $STRING ~/.bashrc)
 echo "--------------------------------"
 echo $REZ_STRING
 echo "--------------------------------"
-if [ $REZ_STRING -ne $STRING ]; then
+if [ "$REZ_STRING" -ne "$STRING" ]; then
         echo "# Hop command --------------------------------------------------
         source $PWD/hop_shell_source" >> ~/.bashrc
         echo "# --------------------------------------------------------------" >> ~/.bashrc
