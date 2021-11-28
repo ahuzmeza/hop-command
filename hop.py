@@ -168,7 +168,7 @@ def hop_set(list_hops):
         handle_error('hop_already_exists')
         return (0)
     # if 1) and 2) are met, set hop
-    rez_string = f"Setting hop '{hop_name}' ..."
+    rez_string = 'Setting hop "+f"{hop_name}" ...'
     print(rez_string)
     # create new hop entry in list_hops like: "hop_name": "_current_path_"
     list_hops.update( {hop_name: getcwd()} )
