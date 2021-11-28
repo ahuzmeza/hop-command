@@ -1,5 +1,6 @@
 # changes hop.py permission +x
 echo -n "-> Setting execute permission on hop.py... "
+chmod +x hop.py
 echo "<- Finished"
 # echos python shabang into hop.py
 echo -n "-> prefixing hop.py with python shebang... "
