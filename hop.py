@@ -1,5 +1,4 @@
 #! /usr/local/bin/python3
-#! /usr/bin/python3
 import sys
 from os import getcwd
 from yaml import dump, safe_load
