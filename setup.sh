@@ -1,15 +1,5 @@
 #! /bin/bash
 
-# echos python shabang into hop.py
-echo -n "->] Prefixing 'hop.py' with python3 shebang...|"
-NEEDLE="#! $(which python3)"
-SRC="#! /usr/local/bin/python3"
-while read a; do
-        echo ${a//$SRC/$NEEDLE}
-done < hop.py > hop.py.t
-mv hop.py{.t,}
-echo "... Finished"
-
 
 # installs pyyaml with pip
 echo "->] Installing pyyaml..."
