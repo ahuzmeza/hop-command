@@ -4,9 +4,8 @@ Describe
 
 ## Configure
 *1)* Clone this repository ___?where?___ you like.
-**2)** 'cd' into hop-command directory.
-**2)** 
-- a) Manually change python shabang in hop.py.
+*2)* 'cd' into hop-command directory.
+*2)* - a) Manually change python shabang in hop.py.
 #### OR
 - b) run:$   sh setup.sh
 
