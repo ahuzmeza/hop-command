@@ -12,8 +12,11 @@ Describe
 
    b) run:$   sh setup.sh
    - This does:
-    > Echos your python shabang into hop.py
-    > Installs pyyaml with pip3
+
+> Echos your python shabang into hop.py
+
+> Installs pyyaml with pip3
+
 
 4. Add following to shell config file. Eg: ~/.bashrc, ~/.zshrc etc
    
