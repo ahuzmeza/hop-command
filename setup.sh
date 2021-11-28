@@ -1,13 +1,13 @@
 # echos python shabang into hop.py
-echo -n "-> prefixing hop.py with python shebang... "
+echo -n "->] prefixing hop.py with python shebang... "
 (echo "#! $(which python3)" && cat hop.py) > tmp && mv tmp hop.py
-echo "<- Finished"
+echo "... Finished"
 
 
 # installs pyyaml with pip
-echo "-> Installing pyyaml..."
+echo "->] Installing pyyaml..."
 pip3 install pyyaml
-echo "<- Finished."
+echo "... Finished."
 
 
 # Edits shell_hop_source file to include current path as export
@@ -21,7 +21,7 @@ echo "... Finished"
 
 
 # source file to ~/.bashrc
-echo -n "-> Appending source to ~/.bashrc... "
+echo "->] Appending source to ~/.bashrc... "
 FILE="~/.bashrc"
 STRING="source $PWD/hop_shell_source"
 if [ -z $(grep "$STRING" "$FILE") ]; then
@@ -30,17 +30,17 @@ else
         echo "# Hop command --------------------------------------------------
         source $PWD/hop_shell_source" >> ~/.bashrc
         echo "# --------------------------------------------------------------" >> ~/.bashrc
+        echo "... Finished"
 fi
-echo "<- Finished"
 
 
 # changes hop.py permission +x
-echo -n "-> Setting execute permission on hop.py... "
+echo -n "->] Setting execute permission on hop.py... "
 chmod +x hop.py
-echo "<- Finished"
+echo "... Finished"
 
 
 # restarts terminal
-echo -n "-> Atempting to restart terminal by sourceing bashrc... "
+echo -n "->] Atempting to restart terminal by sourceing bashrc... "
 source ~/.bashrc
-echo "<- Finished"
+echo "... Finished"
