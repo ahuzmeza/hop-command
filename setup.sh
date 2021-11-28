@@ -23,7 +23,7 @@ REZ_STRING=$(grep $STRING ~/.bashrc)
 echo "--------------------------------"
 echo $REZ_STRING
 echo "--------------------------------"
-if [ -z REZ_STRING ]; then
+if [ -n REZ_STRING ]; then
         echo "... Skipped. Already Sourced"
 else
         echo "# Hop command --------------------------------------------------
