@@ -9,16 +9,18 @@ Describe
 
 ### How?
    a) Manually
-   
+
    b) run:$   sh setup.sh
    - This does:
-   - > Echos your python shabang into hop.py
-   - > Installs pyyaml with pip3
+    > Echos your python shabang into hop.py
+    > Installs pyyaml with pip3
 
 4. Add following to shell config file. Eg: ~/.bashrc, ~/.zshrc etc
+   
+   And replace _____?where?_____ (see step 1.)
 
         # Hop command --------------------------------------------------
-        export PATH=$PATH:_____?where?_See_step_1.____/hop-command
+        export PATH=$PATH:_____?where?_____/hop-command
         # hop.py returns:
         #       1) output to be printed  => print output
         #       2) a path to a directory => cd to that path
