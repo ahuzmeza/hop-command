@@ -1,7 +1,11 @@
 # hop-command
 ## Description:
-A terminal command that lets you save directory paths as 'hops',
-so you can easily cd to your favourite paths.
+A filesystem mobility tool for the shell.
+
+`hop set _name_` saves a 'hop' named _name_
+`hop _name_` lets you cd to the saved path and
+`hop ls` lists all available hops 
+> see `hop help` for details
 
 ## Install & Configure:
 ### Easy way:  :fish:
