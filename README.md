@@ -18,10 +18,9 @@ so you can easily cd to your favourite paths.
 
 > Installs pyyaml with pip3
 
-
 #### 4) Add following to shell config file. Eg: ~/.bashrc, ~/.zshrc etc
    
-   And replace -----?where?----- (see step 1.)
+   **And replace** -----?where?----- (see step 1.)
 
         # Hop command --------------------------------------------------
         export PATH=$PATH:-----?where?-----/hop-command
