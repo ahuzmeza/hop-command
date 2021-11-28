@@ -1,5 +1,8 @@
+# changes hop.py permission +x
+echo -n "-> Setting execute permission on hop.py... "
+echo "<- Finished"
 # echos python shabang into hop.py
-echo -n "-> prefixing hop.py with python shebang"
+echo -n "-> prefixing hop.py with python shebang... "
 (echo "#! $(which python3)" && cat hop.py) > tmp && mv tmp hop.py
 echo "<- Finished"
 
@@ -39,5 +42,7 @@ echo "# --------------------------------------------------------------" >> ~/.ba
 
 echo "<- Finished"
 
+# restarts terminal
+echo "-> Restarting terminal by sourceing bashrc... "
 source ~/.bashrc
-
+echo "<- Finished"
