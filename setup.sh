@@ -5,7 +5,7 @@ echo "... Finished"
 
 
 # installs pyyaml with pip
-echo "->] Installing pyyaml...\n"
+echo "->] Installing pyyaml..."
 pip3 install pyyaml
 echo "... Finished."
 
