@@ -4,7 +4,7 @@ A terminal command that lets you save directory paths as 'hops',
 so you can easily cd to your favourite paths.
 
 ## Install & Configure:
-### Using **`sh setup.sh`**. :fish:
+### Easy way: :fish:
 ##### 1) Clone and cd to directory.
 ##### 2) Use: **`sh setup.sh`**.
 ##### *) Change hop.py permission using **`chmod +x hop.py`** if needed.
@@ -15,7 +15,7 @@ so you can easily cd to your favourite paths.
 
 > Creates 'shell_hop_source' file
 
-> Appends 'ource shell_hop_source' to ~/.bashrc
+> Appends "source 'shell_hop_source'" in ~/.bashrc
 
 > Tries to set permission to hop.py
 
