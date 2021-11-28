@@ -8,7 +8,7 @@ so you can easily cd to your favourite paths.
 ##### 1) Clone and cd to directory.
 ##### 2) Use: **`sh setup.sh`**.
 ##### *) Change hop.py permission using **`chmod +x hop.py`** if needed.
-##### 3) Restart your terminal. :heavy_check_mark:
+##### *) Restart your terminal if needed. :heavy_check_mark:
 - This does:
 
 > Installs pyyaml with pip3
@@ -16,6 +16,10 @@ so you can easily cd to your favourite paths.
 > Creates 'shell_hop_source' file
 
 > Appends 'ource shell_hop_source' to ~/.bashrc
+
+> Tries to set permission to hop.py
+
+> Tries to restart terminal by sourcing ~/.nashrc
 
 
 ### Manually:
