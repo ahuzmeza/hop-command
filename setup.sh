@@ -5,9 +5,8 @@ echo "-> Finished."
 
 
 # creates shell_hop_source file
-echo "-> Creating shell_hop_source file..."
-
-echo "\n# Hop command --------------------------------------------------
+echo -n "-> Creating shell_hop_source file... "
+echo "# Hop command --------------------------------------------------
 export PATH=\$PATH:$PWD
 # hop.py returns:
 #       1) output to be printed  => print output
@@ -24,16 +23,16 @@ hop ()
         fi
 }
 # --------------------------------------------------------------\n" > hop_shell_source
-echo "-> Finished"
+echo "<- Finished"
 
 # source file to ~/.bashrc
-echo "-> Appending source to ~/.bashrc..."
+echo -n "-> Appending source to ~/.bashrc... "
 
-echo "\n# Hop command --------------------------------------------------" >> ~/.bashrc 
-echo "source $PWD/hop_shell_source" >> ~/.bashrc 
-echo "# --------------------------------------------------------------\n" >> ~/.bashrc
+echo "# Hop command --------------------------------------------------
+source $PWD/hop_shell_source" >> ~/.bashrc 
+\# --------------------------------------------------------------" >> ~/.bashrc
 
-echo "-> Finished"
+echo "<- Finished"
 
 source ~/.bashrc
 
