@@ -30,10 +30,7 @@ if [ -z "$REZ_STRING" ]; then
         echo "... Finished"
 else
         echo "... Skipped. Already Sourced"
-       
-       
-       
-       
+
 fi
 
 
