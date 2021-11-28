@@ -5,13 +5,13 @@ echo "... Finished"
 
 
 # installs pyyaml with pip
-echo "->] Installing pyyaml..."
+echo -n"->] Installing pyyaml..."
 pip3 install pyyaml
 echo "... Finished."
 
 
 # Edits shell_hop_source file to include current path as export
-echo "->] exporting hop.py to \$PAThH ... "
+echo -n "->] exporting hop.py to \$PAThH ... "
 while read a; do
         echo ${a//----?where?----/$PWD}
 done < hop_shell_source > hop_shell_source.t
@@ -21,10 +21,9 @@ echo "... Finished"
 
 
 # source file to ~/.bashrc
-echo "->] Appending source to ~/.bashrc... "
-FILE="~/.bashrc"
+echo -n "->] Appending source to ~/.bashrc... "
 STRING="source $PWD/hop_shell_source"
-if [ -z $(grep "$STRING" "$FILE") ]; then
+if [ -z $(grep "$STRING" ~/.bashrc) ]; then
         echo "... Skipped. Already Sourced"
 else
         echo "# Hop command --------------------------------------------------
