@@ -44,3 +44,4 @@ echo "... Finished"
 echo -n "->] Atempting to restart terminal by sourceing bashrc... "
 source ~/.bashrc
 echo "... Finished"
+
