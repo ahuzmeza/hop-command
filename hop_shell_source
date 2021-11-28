@@ -11,13 +11,13 @@ export PATH=\$PATH:----?where?----
 #       2) a path to a directory => cd to that path
 hop ()
 {
-        HOP=\$(hop.py \$@ 2>&1)
+        HOP=$(hop.py $@ 2>&1)
         
-        if [ -d "\$HOP" ]; then
+        if [ -d "$HOP" ]; then
                 cd "\${HOP}"
                 echo "Arrived @ $PWD"
         else
-                echo "\$HOP"
+                echo "$HOP"
         fi
 }
 # --------------------------------------------------------------
