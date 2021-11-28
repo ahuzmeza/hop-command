@@ -27,29 +27,7 @@ so you can easily cd to your favourite paths.
 ##### *) Change hop.py #!shabang if needed.
 ##### *) Change hop.py permission if needed.
 ##### 2) Make sure you have 'pyyaml' installed.
-##### 3) Place `source ----?where?----/hop_shell_source"` in shell config file.  Eg: ~/.bashrc, ~/.bash_profile, ~/.zshrc, etc.
-#### or instead:
-#####   
-##### Add the following to shell config file. 
-
-__in: /hop-command/hop_shell_source:
-
-        # Hop command --------------------------------------------------"
-        export PATH=$PATH:----?where?----
-        hop()
-        {
-                HOP=\$(hop.py $@ 2>&1)
-
-                if [ -d "$HOP" ]; then
-                        cd "${HOP}"
-                        echo "Arrived @ $PWD"
-                else
-                        echo "$HOP"
-                fi
-        }
-        # --------------------------------------------------------------"
-
-
-
-
-
+##### 3) Place the following in shell config file.  Eg: ~/.bashrc, ~/.bash_profile, ~/.zshrc, etc.
+                # Hop command --------------------------------------------------
+                source $PWD/hop_shell_source
+                # --------------------------------------------------------------
