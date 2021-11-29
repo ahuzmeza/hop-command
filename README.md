@@ -11,7 +11,7 @@ A filesystem mobility tool for the shell.
 > see `hop help` for details.
 
 ## Install & Configure:
-### Easy way:  :fish:
+### Easy way: :snail:
 ##### 1) Clone and cd to directory.
 ##### 2) Use: $**`sh setup.sh`**.
 ##### *) Change hop.py permission using **`chmod +x hop.py`** if needed.
