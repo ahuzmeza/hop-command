@@ -152,7 +152,7 @@ def hop_ls(list_hops):
                   Colors.ENDC
                 )
         # 3) print last hopped from path
-        if (previous_path != "-"):
+        if (previous_path != "-" and previous_path != None):
             print("\n"+Colors.BGGRAY+"Last Hopped From:"+Colors.ENDC+f"\n {previous_path}")
         else:
             print(Colors.RED+"\nNot hopped yet"+Colors.ENDC)
