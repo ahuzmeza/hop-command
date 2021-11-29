@@ -29,7 +29,7 @@ A filesystem mobility tool for the shell.
 > Tries to restart terminal by sourcing ~/.bashrc
 
 
-### Manually:
+### Manually: :hammer:
 ##### 1) Clone this repository ----?where?---- you like.
 ##### *) Change hop.py permission if needed.
 ##### 2) :exclamation:Have 'pyyaml' installed.
