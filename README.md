@@ -1,17 +1,10 @@
 # hop-command
 ## Description:
-A filesystem mobility tool for the shell.
-
-`hop set _name_` saves a named 'hop' poinring to current dir.
-
-`hop _name_` cd's you to its path.
-
-`hop ls` lists all available hops.
-
-> see `hop help` for details.
+A terminal command that lets you save directory paths as 'hops',
+so you can easily cd to your favourite paths.
 
 ## Install & Configure:
-### Easy way: :snail:
+### Easy way:  :fish:
 ##### 1) Clone and cd to directory.
 ##### 2) Use: $**`sh setup.sh`**.
 ##### *) Change hop.py permission using **`chmod +x hop.py`** if needed.
@@ -29,16 +22,37 @@ A filesystem mobility tool for the shell.
 > Tries to restart terminal by sourcing ~/.bashrc
 
 
-### Manually: :hammer:
+### Manually:
 ##### 1) Clone this repository ----?where?---- you like.
 ##### *) Change hop.py permission if needed.
 ##### 2) :exclamation:Have 'pyyaml' installed.
-##### 3) Place the following in shell config file.  Eg: ~/.bashrc, ~/.bash_profile, ~/.zshrc, etc.
-    # Hop command --------------------------------------------------
+##### 3) Create shell function:
+##### a) Place the following in shell config file.  Eg: ~/.bashrc, ~/.bash_profile, ~/.zshrc, etc.
 
-    source ----?where?----/hop_shell_source
+> The following is the content of 'hop_shell_source'
 
-    # --------------------------------------------------------------
+export PATH=$PATH:----?where?----/hop-command
+\# hop.py returns:
+\#       1) output to be printed  => print output
+\#       2) a path to a directory => cd to that path
+hop ()
+{
+        HOP=$(hop.py $@ 2>&1)
+        
+        if [ -d "$HOP" ]; then
+                cd "${HOP}"
+                echo "Arrived @ $PWD"
+        else
+                echo "$HOP"
+        fi
+}
+\# --------------------------------------------------------------
+
+### Or
+#### b) Change ----?where---- in 'hop_shell_source' and source it in shell config file.
+\# Hop command --------------------------------------------------
+source ----?where?----/hop_shell_source
+\# --------------------------------------------------------------
 
 
 
