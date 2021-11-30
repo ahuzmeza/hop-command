@@ -4,10 +4,10 @@ A terminal command that lets you save directory paths as 'hops',
 so you can easily cd to your favourite paths.
 
 ## Install & Configure:
-### Easy way:  :fish:
+### Easy way: ⏩
 ##### 1) Clone and cd to directory.
 ##### 2) Use: $**`sh setup.sh`**.
-##### *) Change hop.py permission using **`chmod +x hop.py`** if needed.
+##### *) Change hop.py permission, using **`chmod +x hop.py`**, if needed.
 ##### :wavy_dash:) Restart terminal :heavy_check_mark:
 - This does:
 
@@ -22,11 +22,11 @@ so you can easily cd to your favourite paths.
 > Tries to restart terminal by sourcing ~/.bashrc
 
 
-### Manually:
+### Manually: 🛠️
 ##### 1) Clone this repository ----?where?---- you like.
+##### :exclamation:) Have 'pyyaml' installed.
 ##### *) Change hop.py permission if needed.
-##### 2) :exclamation:Have 'pyyaml' installed.
-##### 3) Create shell function:
+##### 2) Create set up shell function:
 ##### - a) Place the following in shell config file.  Eg: ~/.bashrc, ~/.bash_profile, ~/.zshrc, etc.
 
 > The following is the content of 'hop_shell_source':
