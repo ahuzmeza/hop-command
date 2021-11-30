@@ -27,9 +27,10 @@ so you can easily cd to your favourite paths.
 ##### *) Change hop.py permission if needed.
 ##### 2) :exclamation:Have 'pyyaml' installed.
 ##### 3) Create shell function:
-##### a) Place the following in shell config file.  Eg: ~/.bashrc, ~/.bash_profile, ~/.zshrc, etc.
+##### - a) Place the following in shell config file.  Eg: ~/.bashrc, ~/.bash_profile, ~/.zshrc, etc.
 
 > The following is the content of 'hop_shell_source'
+
 
 export PATH=$PATH:----?where?----/hop-command
 \# hop.py returns:
@@ -49,7 +50,7 @@ hop ()
 \# --------------------------------------------------------------
 
 ### Or
-#### b) Change ----?where---- in 'hop_shell_source' and source it in shell config file.
+#### - b) Change ----?where---- in 'hop_shell_source' and source it in shell config file.
 \# Hop command --------------------------------------------------
 source ----?where?----/hop_shell_source
 \# --------------------------------------------------------------
