@@ -29,31 +29,33 @@ so you can easily cd to your favourite paths.
 ##### 3) Create shell function:
 ##### - a) Place the following in shell config file.  Eg: ~/.bashrc, ~/.bash_profile, ~/.zshrc, etc.
 
-> The following is the content of 'hop_shell_source'
+> The following is the content of 'hop_shell_source':
 
-
- export PATH=$PATH:----?where?----/hop-command
- \# hop.py returns:
- \#       1) output to be printed  => print output
- \#       2) a path to a directory => cd to that path
- hop ()
- {
-         HOP=$(hop.py $@ 2>&1)
-         
-         if [ -d "$HOP" ]; then
-                 cd "${HOP}"
-                 echo "Arrived @ $PWD"
-         else
-                 echo "$HOP"
-         fi
- }
- \# --------------------------------------------------------------
+```
+export PATH=$PATH:----?where?----/hop-command
+# hop.py returns:
+#       1) output to be printed  => print output
+#       2) a path to a directory => cd to that path
+hop ()
+{
+        HOP=$(hop.py $@ 2>&1)
+        
+        if [ -d "$HOP" ]; then
+                cd "${HOP}"
+                echo "Arrived @ $PWD"
+        else
+                echo "$HOP"
+        fi
+}
+# --------------------------------------------------------------
+```
 
 ### Or
 #### - b) Change ----?where---- in 'hop_shell_source' and source it in shell config file.
-\# Hop command --------------------------------------------------
+```
+# Hop command --------------------------------------------------
 source ----?where?----/hop_shell_source
-\# --------------------------------------------------------------
-
+# --------------------------------------------------------------
+```
 
 
