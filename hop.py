@@ -166,12 +166,12 @@ def hop_ls(list_hops):
                  print(hop_name_color+f" {key} "+separator_color+"\t@ "+hop_path_color 
                     + format_path(key, list_hops[key], window_width)
                     + Colors.ENDC)                                      
-                
+        print("["+Colors.GREEN+f"{len(list_hops)}"+Colors.ENDC+"] hops")
         # 3) print last hopped from path
         if (previous_path != "-" and previous_path != None):
             print("\n"+Colors.BGGRAY+"Last Hopped From:"+Colors.ENDC+f"\n {previous_path}")
         else:
-            print(Colors.RED+"\nNot hopped yet"+Colors.ENDC)
+            print(Colors.RED+"Not hopped yet"+Colors.ENDC)
 
     print( separator_string_val)
     return (0)
@@ -251,13 +251,14 @@ def print_help():
     separator_string_val = "-" * 80
     print( separator_string_val)
     print("hop-command]\n - STRICT arg FORMAT\n - CASE INSENSITIVE\n"
-        +"\n\thop _name_     - Hops to _name_ if exists."
-        +"\n\thop "+Colors.GOLD+"ls"  +Colors.ENDC+"\t\t- Lists all saved hops."
-        +"\n\thop "+Colors.GOLD+"set" +Colors.ENDC+" _name_\t- Saves a hop named _name_, pointing to current path."
-        +"\n\thop "+Colors.GOLD+"remove " +Colors.ENDC+" _name_\t- removees hop."
-        +"\n\thop "+Colors.GOLD+"back"+Colors.ENDC+"\t- Hops at 'last hopped from'."
-        +"\n\thop "+Colors.GOLD+"reset"+Colors.ENDC+"\t- removees 'last hopped from' path."
-        +"\n\thop "+Colors.GOLD+"prune"+Colors.ENDC+"\t- removees all hops with missing paths."
+        +"\n\thop _name_        - Hops to _name_ if exists."
+        +"\n\thop "+Colors.GOLD+"ls"  +Colors.ENDC+"\t\t  - Lists all saved hops."
+        +"\n\thop "+Colors.GOLD+"set" +Colors.ENDC+" _name_\t  - Saves a hop named _name_, pointing to current path."
+        +"\n\thop "+Colors.GOLD+"remove" +Colors.ENDC+" _name_ - Removees hop named _name_."
+        +"\n\thop "+Colors.GOLD+"prune"+Colors.ENDC+"\t  - Removees all hops with missing directory at paths."
+        +"\n\thop "+Colors.GOLD+"back"+Colors.ENDC+"\t  - Hops at 'last hopped from'."
+        +"\n\thop "+Colors.GOLD+"reset"+Colors.ENDC+"\t  - removees 'last hopped from' path."
+        +"\n"
     )
     print( separator_string_val)
 
