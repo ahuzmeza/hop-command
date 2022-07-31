@@ -166,12 +166,12 @@ def hop_ls(list_hops):
                  print(hop_name_color+f" {key} "+separator_color+"\t@ "+hop_path_color 
                     + format_path(key, list_hops[key], window_width)
                     + Colors.ENDC)                                      
-        print("["+Colors.GREEN+f"{len(list_hops)}"+Colors.ENDC+"] hops")
+        print(" ["+Colors.GREEN+f"{len(list_hops)}"+Colors.ENDC+"] hops")
         # 3) print last hopped from path
         if (previous_path != "-" and previous_path != None):
             print("\n"+Colors.BGGRAY+"Last Hopped From:"+Colors.ENDC+f"\n {previous_path}")
         else:
-            print(Colors.RED+"Not hopped yet"+Colors.ENDC)
+            print("\n"+Colors.RED+"Not hopped yet"+Colors.ENDC)
 
     print( separator_string_val)
     return (0)
