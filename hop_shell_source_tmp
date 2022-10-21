@@ -3,13 +3,17 @@
 #       2) a path to a directory => cd to that path
 hop ()
 {
-        HOP=$(hop.py $@ 2>&1)
-        
-        if [ -d "$HOP" ]; then
-                cd "${HOP}"
-                echo "Arrived @ $PWD"
+        if [ $1 == "get" ]; then
+                HOP=$(hop.py $@ 2>&1)
+                echo "->" $HOP
         else
-                echo "$HOP"
+                HOP=$(hop.py $@ 2>&1)
+                if [ -d "$HOP" ]; then
+                        cd "${HOP}"
+                        echo "Arrived @ $PWD"
+                else
+                        echo "$HOP"
+                fi
         fi
 }
 # Esential part ------------------------------------------------

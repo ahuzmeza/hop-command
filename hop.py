@@ -38,6 +38,10 @@ def main():
             if (len_args > 2):
                 return handle_error('invalid_args')
             exit( hop_back( list_hops))
+        if (str_action == 'get'):
+            if (len_args < 3):
+                return handle_error('invalid_args')
+            return  hop_get( sys.argv[2], list_hops)
         if (str_action == 'help'):
             if (len_args > 2):
                 return handle_error('invalid_args')
@@ -179,6 +183,12 @@ def hop_ls(list_hops):
 def hop_exists_at_path(path):
     return (Path(path).is_dir())
 
+def hop_get(hop_name, list_hops):
+    if hop_name in list_hops:
+        print( list_hops[hop_name] )
+    else:
+        handle_error('hop_not_found')
+
 def hop_set(list_hops, hop_name):
     # 1) checks if hop name is in restricted list
     list_restricted = ["set", "rm", "ls", "back", "help", 'history_prev_hop']
@@ -254,6 +264,7 @@ def print_help():
         +"\n\thop _name_        - Hops to _name_ if exists."
         +"\n\thop "+Colors.GOLD+"ls"  +Colors.ENDC+"\t\t  - Lists all saved hops."
         +"\n\thop "+Colors.GOLD+"set" +Colors.ENDC+" _name_\t  - Saves a hop named _name_, pointing to current path."
+        +"\n\thop "+Colors.GOLD+"get" +Colors.ENDC+" _name_\t  - Returns the path of hop, If it exists."
         +"\n\thop "+Colors.GOLD+"remove" +Colors.ENDC+" _name_ - Removees hop named _name_."
         +"\n\thop "+Colors.GOLD+"prune"+Colors.ENDC+"\t  - Removees all hops with missing directory at paths."
         +"\n\thop "+Colors.GOLD+"back"+Colors.ENDC+"\t  - Hops at 'last hopped from'."
