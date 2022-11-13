@@ -28,7 +28,7 @@ HOPS_FILE = DATA_DIR / "saved_hops.yaml"
 #   -1      if invalid args
 #    0      if successful
 # otherwise, exists:
-#   _path_  for shell script to cd to
+# exits with _path_  for shell script 
 def main():
     len_args = len(sys.argv)
     if (len_args > 1 and len_args < 4):
@@ -37,11 +37,11 @@ def main():
         if (str_action == 'back'):
             if (len_args > 2):
                 return handle_error('invalid_args')
-            exit( hop_back( list_hops))
+            exit( hop_back(list_hops))
         if (str_action == 'get'):
             if (len_args < 3):
                 return handle_error('invalid_args')
-            return  hop_get( sys.argv[2], list_hops)
+            return  hop_get(sys.argv[2], list_hops)
         if (str_action == 'help'):
             if (len_args > 2):
                 return handle_error('invalid_args')
@@ -49,23 +49,23 @@ def main():
         if (str_action == 'ls'):
             if (len_args > 2):
                 return handle_error('invalid_args')
-            return hop_ls( list_hops)
+            return hop_ls(list_hops)
         if (str_action == 'set'):
             if (len_args < 3):
                 return handle_error('invalid_args')
-            return hop_set( list_hops, hop_name=sys.argv[2])
+            return hop_set(list_hops, hop_name=sys.argv[2])
         if (str_action == 'remove'):
             if (len_args < 3):
                 handle_error('invalid_args')
-            return hop_remove( list_hops, hop_name=sys.argv[2])
+            return hop_remove(list_hops, hop_name=sys.argv[2])
         if (str_action == 'reset'):
             if (len_args > 2):
                 return handle_error('invalid_args')
-            return hop_reset( list_hops)
+            return hop_reset(list_hops)
         if (str_action == 'prune'):
             if (len_args > 2):
                 return handle_error('invalid_args')
-            return hop_prune( list_hops)
+            return hop_prune(list_hops)
         if (str_action == 'rm' or str_action == 'delete'):
             return handle_error("use_remove_instead")
         # if str_action is not one of the above, it is considered a hop name
@@ -83,7 +83,7 @@ def read_hops():
             return safe_load(stream)
         except YAMLError as exc:
             print(exc)
-            return (0)
+            return 0
 
 
 # writes hops to HOPS_FILE
@@ -91,21 +91,21 @@ def write_hops(list_hops):
     with open( HOPS_FILE, 'w') as outfile:
         try:
             dump(list_hops, outfile, default_flow_style=False)
-            return (0)
+            return 0
         except YAMLError as exc:
             print(exc)
-            return (-1)
+            return -1
         
         
 def hop_back(list_hops):
     # 1) check if no hop is active
     if (list_hops['history_prev_hop'] == None):
         handle_error('no_hop_active')
-        return (0)
+        return 0
     # 2) if given hop_name's path is an existing directory
     if (not Path(list_hops['history_prev_hop']).is_dir()):
         handle_error('dir_does_not_exist')
-        return (0)
+        return 0
     # if 1) and 2) are met, proceed to hop back at 'history_prev_hop'
     return (list_hops['history_prev_hop'])
 
@@ -115,22 +115,22 @@ def hop_to(hop_name):
     # 1) finds if hop exists
     if (hop_name not in list_hops):
         handle_error('hop_not_found')
-        return (0)
+        return 0
     # 2) if already hopped 
     if (list_hops[hop_name] == getcwd()):
         handle_error('already_here')
-        return (0)
+        return 0
     # 3) if given hop_name's path is an existing directory
     if (not Path(list_hops[hop_name]).is_dir()):
         handle_error('dir_does_not_exist')
-        return (0)
+        return 0
         
     # if 1), 2), and 3) are met, return hop_name's path
     hop_path = list_hops[hop_name]
     # saves path of where we're hopping from
     list_hops['history_prev_hop'] = getcwd()
     write_hops(list_hops)
-    return (hop_path)
+    return hop_path
 
 
 def hop_ls(list_hops):
@@ -178,10 +178,10 @@ def hop_ls(list_hops):
             print("\n"+Colors.RED+"Not hopped yet"+Colors.ENDC)
 
     print( separator_string_val)
-    return (0)
+    return 0
 
 def hop_exists_at_path(path):
-    return (Path(path).is_dir())
+    return Path(path).is_dir()
 
 def hop_get(hop_name, list_hops):
     if hop_name in list_hops:
@@ -194,16 +194,16 @@ def hop_set(list_hops, hop_name):
     list_restricted = ["set", "rm", "ls", "back", "help", 'history_prev_hop']
     if (hop_name in list_restricted):
         handle_error('hop_restricted_name')
-        return (0)
+        return 0
     # 2) checks if name exists already
     if (hop_name in list_hops):
         handle_error('hop_already_exists')
-        return (0)
+        return 0
     # if 1) and 2) are met, set hop
     print( f"Setting hop '{hop_name}' ...")
     # create new hop entry in list_hops like: "hop_name": "_current_path_"
     list_hops.update( {hop_name: getcwd()} )
-    return (write_hops(list_hops))
+    return write_hops(list_hops)
 
 
 def hop_remove(list_hops, hop_name):
@@ -211,10 +211,10 @@ def hop_remove(list_hops, hop_name):
     if (hop_name in list_hops and hop_name != 'history_prev_hop'):
         print( f"Deleting hop '{hop_name}' ...")
         del list_hops[hop_name]
-        return (write_hops(list_hops))
+        return write_hops(list_hops)
     else:
         handle_error('hop_not_found')
-    return (0)
+    return 0
        
 
 def hop_reset(list_hops):
@@ -230,10 +230,10 @@ def hop_prune(list_hops):
     # if no hops to be removed
     if (len(to_be_removed_hops) == 0):
         handle_error('no_hops_to_remove')
-        return (0)
+        return 0
     # use hop remove to remove hops
     for key in to_be_removed_hops:
-        hop_remove( list_hops, hop_name=key)
+        hop_remove(list_hops, hop_name=key)
 
 def hop_help():
     print_help()
@@ -295,7 +295,7 @@ def handle_error(control_value):
         print_help()
     if (control_value == "hop_restricted_name"):
         print(Colors.RED+"Restricted names: "+Colors.ENDC+"'set', 'rm', 'ls', 'back', 'help'")
-    return (-1) # error was found since function was called
+    return 1 # error was found since function was called
 
 def __init__():
     if (not DATA_DIR.is_dir()):
