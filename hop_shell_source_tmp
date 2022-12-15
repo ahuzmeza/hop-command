@@ -5,7 +5,7 @@ hop ()
 {
         if [ $1 == "get" ]; then
                 HOP=$(hop.py $@ 2>&1)
-                echo "->" $HOP
+                echo $HOP
         else
                 HOP=$(hop.py $@ 2>&1)
                 if [ -d "$HOP" ]; then

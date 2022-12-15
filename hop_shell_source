@@ -10,8 +10,6 @@ hop ()
                 HOP=$(hop.py $@ 2>&1)
                 echo $HOP
         else
-                echo "-------"
-
                 HOP=$(hop.py $@ 2>&1)
                 if [ -d "$HOP" ]; then
                         cd "${HOP}"
