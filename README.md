@@ -3,6 +3,11 @@
 A terminal command that lets you save directory paths as 'hops',
 so you can easily cd to your favourite paths.
 
+![Alt text](/readme/hop.png?raw=true "Optional Title")
+
+![Alt text](/readme/hophelp.png?raw=true "Optional Title")
+
+
 ## Install & Configure:
 ### Easy way: ⏩
 ##### 1) Clone and cd to directory.
@@ -57,5 +62,6 @@ hop ()
 source ----?where?----/hop_shell_source
 # --------------------------------------------------------------
 ```
+
 
 
