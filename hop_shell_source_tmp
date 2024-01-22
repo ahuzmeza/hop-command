@@ -3,7 +3,7 @@
 #       2) a path to a directory => cd to that path
 hop ()
 {
-        if [ $1 == "get" ]; then
+        if [ "$1" == "get" ]; then
                 HOP=$(hop.py $@ 2>&1)
                 echo $HOP
         else
